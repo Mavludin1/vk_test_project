@@ -1,4 +1,4 @@
-.container {
+.link_container {
   display: block;
   max-width: 300px;
   border-radius: 3px;
@@ -7,7 +7,7 @@
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.container:hover {
+.link_container:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -102,4 +102,14 @@
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+.container{
+  position: relative;
+}
+
+.favarite {
+  position: absolute;
+  top: 0;
+  z-index: 3;
 }

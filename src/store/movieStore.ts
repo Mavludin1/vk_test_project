@@ -5,6 +5,7 @@ import { Movie, Person } from "../types/types";
 class MovieStore {
   movies: Movie[] = [];
   movie: Movie | null = null;
+  favorites: Movie[] = [];
   movieActors: Person[] = [];
   currentPage: number = 1;
   totalPageCount: number = 0;
@@ -14,6 +15,7 @@ class MovieStore {
 
   constructor() {
     makeAutoObservable(this);
+    this.loadFavoritesFromLocalStorage();
   }
 
   getMovies = async (filter?: string) => {
@@ -74,7 +76,9 @@ class MovieStore {
       if (raitingIndex !== -1) {
         this.filters.splice(raitingIndex, 1);
       }
-      this.filters.push(`&rating.imdb=${(min + 0.1).toFixed(1)}-${max.toFixed(1)}`);
+      this.filters.push(
+        `&rating.imdb=${(min + 0.1).toFixed(1)}-${max.toFixed(1)}`
+      );
       this.getMovies(this.filters.join(""));
     } catch (error) {
       console.log(error);
@@ -99,20 +103,6 @@ class MovieStore {
     }
   };
 
-  // getMovieSearch = (data: string, type: string) => {
-  //   try {
-  //     this.movies = [];
-  //     const queryIndex = this.filters.findIndex((str) => str.includes("query"));
-  //     if (queryIndex !== -1) {
-  //       this.filters.splice(queryIndex, 1);
-  //     }
-  //     this.filters.push(`&${type}=${data}`);
-  //     this.getMovies(this.filters.join(""));
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   loadNextPage = async () => {
     const nextPage = this.currentPage + 1;
     if (nextPage <= this.totalPageCount) {
@@ -129,7 +119,7 @@ class MovieStore {
     }
   };
 
-  getMovieSearch = async (name: string,) => {
+  getMovieSearch = async (name: string) => {
     try {
       const res = await ApiService.searchMovie(name);
       if (res) {
@@ -154,6 +144,29 @@ class MovieStore {
       }
     } catch (error) {
       console.log("Ошибка загрузки фильма:", error);
+    }
+  };
+
+  addToFavorites = (movie: Movie) => {
+    if (!this.favorites.some((fav) => fav.id === movie.id)) {
+      this.favorites.push(movie);
+      this.saveFavoritesToLocalStorage();
+    }
+  };
+
+  removeFromFavorites = (movieId: number) => {
+    this.favorites = this.favorites.filter((fav) => fav.id !== movieId);
+    this.saveFavoritesToLocalStorage();
+  };
+
+  saveFavoritesToLocalStorage = () => {
+    localStorage.setItem('favorites', JSON.stringify(this.favorites));
+  };
+
+  loadFavoritesFromLocalStorage = () => {
+    const storedFavorites = localStorage.getItem('favorites');
+    if (storedFavorites) {
+      this.favorites = JSON.parse(storedFavorites);
     }
   };
 }

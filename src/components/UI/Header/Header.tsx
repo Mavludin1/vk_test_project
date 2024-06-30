@@ -6,10 +6,11 @@ import { Search } from "../Search/Search";
 export const Header = observer(() => {
   return (
     <div className={styles.header}>
-      <Link className={styles.link} to={"/"}>
+      <Link className={styles.logo} to={"/"}>
         MyLogo{")"}
       </Link>
       <Search />
+      <Link className={styles.favarite} to={'/favarite'}>Избранные</Link>
     </div>
   );
 });
