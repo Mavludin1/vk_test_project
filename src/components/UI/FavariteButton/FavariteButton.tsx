@@ -8,7 +8,7 @@ type FavoriteButtonProps = {
 };
 
 export const FavoriteButton = observer(({ movie }: FavoriteButtonProps) => {
-  const isFavorite = movieStore.favorites.some((fav) => fav.id === movie.id);
+  const isFavorite = movieStore.favorites.some((fav) => fav.id === movie?.id);
 
   const handleClick = () => {
     if (isFavorite) {

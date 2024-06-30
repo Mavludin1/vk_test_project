@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import movieStore from "../../../store/movieStore";
 import { PersonCartList } from "../../UI/PersonCartList/PersonCartList";
-
+import { FavoriteButton } from "../../UI/FavariteButton/FavariteButton";
 
 export const MoviePage = observer(() => {
   const { getMovie, movieActors, movie } = movieStore;
@@ -30,6 +30,7 @@ export const MoviePage = observer(() => {
             <h1 className={styles.title}>{movie?.name}</h1>
             <h5 className={styles.eng_title}>{movie?.alternativeName}</h5>
           </div>
+          <div className={styles.favarite}>{movie ? <FavoriteButton movie={movie} /> : <></>}</div>
           <div className={styles.watchability}>
             {movie?.watchability.items?.map((item) => (
               <a
