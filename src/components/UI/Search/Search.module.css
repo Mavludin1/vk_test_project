@@ -1,0 +1,24 @@
+.search_input {
+  border: none;
+  width: 300px;
+  font-size: 20px;
+}
+
+.search_input:focus {
+  outline: none;
+}
+
+.search_container {
+  margin: 0 auto;
+  padding: 10px;
+  width: fit-content;
+  border-bottom: 1px solid transparent;
+}
+
+.search_container:focus-within {
+  border-bottom: 1px solid blue;
+}
+
+.none {
+  display: none;
+}

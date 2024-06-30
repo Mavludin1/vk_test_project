@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px auto;
+}
+
+.title {
+  color: #fff;
+  font-size: 25px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.container_filters {
+  display: flex;
+  gap: 20px;
+  color: #fff;
+}
+
+.name {
+  font-size: 20px;
+}
+
+.filter {
+  margin-top: 10px;
+}
+
+.input {
+  display: flex;
+  gap: 15px;
+}

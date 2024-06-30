@@ -1,0 +1,121 @@
+.arrow {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border: solid 2px white;
+  transition: 0.5s;
+  overflow: hidden;
+  background-color: #a9dfd8;
+}
+
+.arrow.next {
+  transform: rotate(180deg);
+}
+
+.arrow:hover {
+  border: solid 2px white;
+  border-radius: 50%;
+}
+
+.arrow:after {
+  position: absolute;
+  display: block;
+  content: "";
+  color: white;
+  width: 26px;
+  height: 16px;
+  top: 6px;
+  left: 5px;
+  border-bottom: solid 2px;
+  transform: translatex(4px);
+}
+
+.arrow:before {
+  position: absolute;
+  display: block;
+  content: "";
+  color: white;
+  width: 12px;
+  height: 12px;
+  border-top: solid 2px;
+  border-left: solid 2px;
+  top: 50%;
+  left: 6px;
+  transform-origin: 0% 0%;
+  transform: rotatez(-45deg);
+}
+
+.arrow:hover:before {
+  animation: aniArrowPrev 1s cubic-bezier(0, 0.6, 1, 0.4) infinite 0.5s;
+}
+
+.arrow:hover:after {
+  animation: aniArrowPrev2 1s cubic-bezier(0, 0.6, 1, 0.4) infinite 0.5s;
+}
+
+.arrow.next:hover:before {
+  animation: aniArrowNext 1s cubic-bezier(0, 0.6, 1, 0.4) infinite 0.5s;
+}
+
+.arrow.next:hover:after {
+  animation: aniArrowNext2 1s cubic-bezier(0, 0.6, 1, 0.4) infinite 0.5s;
+}
+
+.arrow.disabled,
+.arrow.disabled:hover,
+.arrow.disabled:hover:before,
+.arrow.disabled:hover:after,
+.arrow.next.disabled:hover:before,
+.arrow.next.disabled:hover:after {
+  animation: none;
+  cursor: auto;
+  border-radius: 0;
+  opacity: 0.6;
+}
+
+@keyframes aniArrowPrev {
+  0% {
+    transform: rotatez(-45deg) translateY(30px) translateX(30px);
+  }
+  100% {
+    transform: rotatez(-45deg) translateY(-35px) translateX(-35px);
+  }
+}
+
+@keyframes aniArrowPrev2 {
+  0% {
+    transform: translateX(45px);
+  }
+  100% {
+    transform: translateX(-44px);
+  }
+}
+
+@keyframes aniArrowNext {
+  0% {
+    transform: rotatez(-45deg) translateY(30px) translateX(30px);
+  }
+  100% {
+    transform: rotatez(-45deg) translateY(-35px) translateX(-35px);
+  }
+}
+
+@keyframes aniArrowNext2 {
+  0% {
+    transform: translateX(45px);
+  }
+  100% {
+    transform: translateX(-44px);
+  }
+}
+
+@keyframes borderAni {
+  0% {
+    border: solid 2px white;
+  }
+  100% {
+    border: solid 2px white;
+    border-radius: 50%;
+  }
+}

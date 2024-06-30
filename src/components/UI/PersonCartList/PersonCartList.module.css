@@ -1,0 +1,57 @@
+.carousel {
+  position: relative;
+  overflow: hidden;
+  margin: 20px 0;
+  width: 620px;
+}
+
+.personCartList {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 20px;
+  width: calc(100% * 3 - 40px);
+  position: relative;
+  left: 0;
+}
+
+.personCart {
+  flex: 0 0 calc((620px - 40px) / 3);
+  margin-right: 10px;
+  transition: opacity 0.3s ease;
+}
+
+.personCart.active {
+  opacity: 1;
+}
+
+.prevButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+  color: green;
+}
+
+.prevButton {
+  left: 10px;
+}
+
+.nextButton {
+  right: 10px;
+}
