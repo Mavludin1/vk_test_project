@@ -104,12 +104,13 @@
   -webkit-box-orient: vertical;
 }
 
-.container{
+.container {
   position: relative;
 }
 
 .favarite {
   position: absolute;
-  top: 0;
+  top: 5px;
+  left: 10px;
   z-index: 3;
 }
